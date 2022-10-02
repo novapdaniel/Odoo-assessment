@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="sale_order_delivery_charge_inherit" model="ir.ui.view">
+        <field name="name">sale.order.delivery.charge.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_order_template_id']" position="after">
+                <field name="delivery_charge"/>
+            </xpath>
+            <xpath expr="//tree/field[@name='name']" position="after">
+                <field name="delivery_charge_check"/>
+            </xpath>
+            <xpath expr="//tree/field[@name='product_id']" position="attributes">
+                <attribute name="attrs">{'invisible': [('delivery_charge_check','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='name']" position="attributes">
+                <attribute name="attrs">{'invisible': [('delivery_charge_check','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='delivery_charge_check']" position="attributes">
+                <attribute name="attrs">{'invisible': [('delivery_charge_check','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='product_uom_qty']" position="attributes">
+                <attribute name="attrs">{'invisible': [('delivery_charge_check','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='qty_delivered']" position="attributes">
+                <attribute name="attrs">{'invisible': [('delivery_charge_check','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='qty_invoiced']" position="attributes">
+                <attribute name="attrs">{'invisible': [('delivery_charge_check','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='price_unit']" position="attributes">
+                <attribute name="attrs">{'invisible': [('delivery_charge_check','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='tax_id']" position="attributes">
+                <attribute name="attrs">{'invisible': [('delivery_charge_check','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='customer_lead']" position="attributes">
+                <attribute name="attrs">{'invisible': [('delivery_charge_check','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='price_subtotal']" position="attributes">
+                <attribute name="attrs">{'invisible': [('delivery_charge_check','=',True)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="account_move_line_inherit" model="ir.ui.view">
+        <field name="name">account.move.line.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='product_id']" position="after">
+                <field name="is_account_move"></field>
+            </xpath>
+            <xpath expr="//tree/field[@name='product_id']" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_account_move','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='is_account_move']" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_account_move','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='name']" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_account_move','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='quantity']" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_account_move','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='price_unit']" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_account_move','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='tax_ids']" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_account_move','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='discount']" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_account_move','=',True)]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='price_subtotal']" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_account_move','=',True)]}</attribute>
+            </xpath>
+        </field>
+
+    </record>
+</odoo>
